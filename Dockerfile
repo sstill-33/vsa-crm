@@ -30,7 +30,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME="0.0.0.0"
-ENV PORT=3000
 
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs && \
@@ -56,6 +55,6 @@ RUN chmod +x ./docker-entrypoint.sh
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 8080
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
