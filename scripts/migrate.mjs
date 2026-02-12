@@ -8,11 +8,16 @@ if (!DATABASE_URL) {
   process.exit(1);
 }
 
-const sql = postgres(DATABASE_URL, { max: 1 });
-const db = drizzle(sql);
+try {
+  const sql = postgres(DATABASE_URL, { max: 1 });
+  const db = drizzle(sql);
 
-console.log("Running migrations...");
-await migrate(db, { migrationsFolder: "./drizzle" });
-console.log("Migrations complete.");
+  console.log("Running migrations...");
+  await migrate(db, { migrationsFolder: "./drizzle" });
+  console.log("Migrations complete.");
 
-await sql.end();
+  await sql.end();
+} catch (err) {
+  console.error("Migration failed:", err);
+  process.exit(1);
+}
