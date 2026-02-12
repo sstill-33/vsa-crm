@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1E3554">
+  <title>VSA CRM — Offline</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1E3554;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 2rem;
+      padding-top: calc(2rem + env(safe-area-inset-top));
+    }
+    .container {
+      text-align: center;
+      max-width: 360px;
+    }
+    .logo {
+      margin-bottom: 2rem;
+    }
+    .logo svg {
+      width: 120px;
+      height: auto;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .retry-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: #E5A21A;
+      color: #1E3554;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .retry-btn:hover { opacity: 0.9; }
+    .retry-btn:active { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <svg viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 20 L60 120 L90 120 L50 20 Z" fill="white"/>
+        <path d="M75 20 L115 20 L75 120 L45 120 Z" fill="white"/>
+        <path d="M150 30 C125 20, 110 45, 140 55 C170 65, 160 95, 130 90 L120 115 C170 130, 200 90, 170 75 C140 60, 150 40, 180 50 L190 30 C170 20, 160 25, 150 30 Z" fill="#E5A21A"/>
+      </svg>
+    </div>
+    <h1>You are offline</h1>
+    <p>VSA CRM requires an internet connection to load data. Please check your connection and try again.</p>
+    <button class="retry-btn" onclick="window.location.reload()">Retry</button>
+  </div>
+</body>
+</html>

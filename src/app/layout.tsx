@@ -1,17 +1,34 @@
 import "~/app/globals.css";
 
-import { type Metadata } from "next";
+import { type Metadata, type Viewport } from "next";
 import { Geist } from "next/font/google";
 import { TRPCReactProvider } from "~/trpc/react";
 import { Toaster } from "~/components/ui/sonner";
 import { Sidebar } from "~/components/layout/Sidebar";
 import { BottomNav } from "~/components/layout/BottomNav";
 import { TopBar } from "~/components/layout/TopBar";
+import { ServiceWorkerRegistrar } from "~/components/pwa/ServiceWorkerRegistrar";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1E3554",
+};
 
 export const metadata: Metadata = {
   title: "VSA CRM",
   description: "VSA Acquisition Pipeline CRM",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
+  ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "VSA CRM",
+  },
 };
 
 const geist = Geist({
@@ -43,6 +60,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </TRPCReactProvider>
+        <ServiceWorkerRegistrar />
       </body>
     </html>
   );
